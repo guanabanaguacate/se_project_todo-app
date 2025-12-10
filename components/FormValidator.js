@@ -27,9 +27,9 @@ class FormValidator {
   //todo - implementing this function - copy paste from validate.js
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      showInputError(inputElement, inputElement.validationMessage);
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      hideInputError(inputElement);
+      this._hideInputError(inputElement);
     }
   }
 
@@ -58,9 +58,9 @@ class FormValidator {
     this._toggleButtonState(inputList, buttonElement);
 
     inputList.forEach((input) => {
-      input.addEventListener("keydown", () => {
-        this._checkInputValidity();
-        this._toggleButtonState();
+      input.addEventListener("input", () => {
+        this._checkInputValidity(input);
+        this._toggleButtonState(inputList, buttonElement);
       });
     });
   }
@@ -73,6 +73,12 @@ class FormValidator {
   }
 
   //public method to disable submit button and reset form fields
+  resetValidation() {
+    this._formElement.reset();
+    this._inputList.forEach((input) => this._hideInputError(input));
+    this._toggleButtonState();
+  }
+
 }
 
 export default FormValidator;

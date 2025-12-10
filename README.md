@@ -18,4 +18,4 @@ Validation is used in order to determine whether or not a user has or hasn't don
 
 This project is deployed on GitHub Pages:
 
-https://github.com/guanabanaguacate/se_project_todo-app.git 
+https://guanabanaguacate.github.io/se_project_todo-app/ 
