@@ -77,16 +77,20 @@ addTodoForm.addEventListener("submit", (evt) => {
   const id = uuidv4();
 
   const values = { name, date, id };
-  const todo = generateTodo(values);
-  todosList.append(todo);
-  closeModal(addTodoPopup);
+  renderTodo(values);
+
+  closeModal(addTodoPopup); // do i need this line?
+
+  newTodoValidator.resetValidation();
 });
 
-//???
+const renderTodo = (item) => {
+  const todo = generateTodo(item);
+  todosList.append(todo);
+};
+
 initialTodos.forEach((item) => {
-  const todo = new Todo(item);
-  const todoElement = todo.getView();
-  todosList.append(todoElement);
+  renderTodo(item); // just one line of code instead of the 2 lines
 });
 
 //instantiate
