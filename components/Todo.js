@@ -46,12 +46,8 @@ class Todo {
   }
 
   getView() {
-    
-
     //document.querySelector(this._selector);
     //this._element = todoTemplate.content
-    
-    
 
     this._todoNameEl.textContent = this._data.name;
 

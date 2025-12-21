@@ -9,6 +9,23 @@ const addTodoForm = addTodoPopup.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
+const section = new Section({
+  items: [], //pass initial todos
+  renderer: () => {
+    //generate todo item
+    //add it to the todo list
+    //refer it to the forEach loop in this file
+    initialTodos.forEach((item) => {
+const Todo = generateTodo(item);
+todosList.append(todo);
+});
+  },
+  containerSelector: ".todos__list",
+});
+
+//call section instance's renderItems method
+renderItems(); 
+
 const openModal = (modal) => {
   modal.classList.add("popup_visible");
 };
@@ -86,12 +103,13 @@ addTodoForm.addEventListener("submit", (evt) => {
 
 const renderTodo = (item) => {
   const todo = generateTodo(item);
-  todosList.append(todo);
+  todosList.append(todo); //use addItem method instead
 };
 
-initialTodos.forEach((item) => {
-  renderTodo(item); // just one line of code instead of the 2 lines
-});
+// initialTodos.forEach((item) => {
+// const Todo = generateTodo(item);
+// todosList.append(todo); //use addItem method instead
+// });
 
 //instantiate
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
