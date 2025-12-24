@@ -20,7 +20,7 @@ class Todo {
     //delete button handler
     this._todoDeleteBtn.addEventListener("click", () => {
       this._todoElement.remove();
-      this._handleDelete(this._completed);
+      this._handleDelete(this._data.completed);
     });
 
     //set 'change' listener on checkbox el

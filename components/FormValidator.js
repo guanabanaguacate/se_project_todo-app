@@ -24,7 +24,6 @@ class FormValidator {
     errorElement.textContent = "";
   };
 
-  //todo - implementing this function - copy paste from validate.js
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);

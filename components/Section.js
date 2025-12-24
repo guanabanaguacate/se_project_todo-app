@@ -8,18 +8,15 @@ class Section {
 
   renderItems() {
     this._items.forEach((item) => {
-        //call renderer and pass it the item as an argument
-        this._renderer(item)
+      //call renderer and pass it the item as an argument
+      this._renderer(item);
+    });
+  }
 
-}); 
-  
-}
-
-    addItem(element){
- //add element to this container
- this._container.append(element)
-    }
-
+  addItem(element) {
+    //add element to this container
+    this._container.append(element);
+  }
 }
 
 export default Section;
