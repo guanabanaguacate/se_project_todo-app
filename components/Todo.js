@@ -2,8 +2,9 @@
 const templateSelector = "#todo-template";
 
 class Todo {
-  constructor(data, selector = templateSelector) {
+  constructor(data, selector = templateSelector, handleCheck, handleDelete) {
     this._data = data;
+    this._completed = data.completed;
     this._templateElement = document.querySelector(selector);
     this._todoElement = this._templateElement.content
       .querySelector(".todo")
@@ -11,18 +12,22 @@ class Todo {
     this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
     this._todoNameEl = this._todoElement.querySelector(".todo__name");
     this._todoDate = this._todoElement.querySelector(".todo__date");
+    this._handleCheck = handleCheck;
+    this._handleDelete = handleDelete;
   }
 
   _setEventListeners() {
     //delete button handler
     this._todoDeleteBtn.addEventListener("click", () => {
       this._todoElement.remove();
+      this._handleDelete(this._completed);
     });
 
     //set 'change' listener on checkbox el
     this._todoCheckboxEl.addEventListener("change", () => {
       //when clicked, change completion from true to false, or vice versa
       this._data.completed = !this._data.completed;
+      this._handleCheck(this._data.completed);
     });
   }
 
