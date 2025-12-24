@@ -9,10 +9,10 @@ import TodoCounter from "../components/TodoCounter.js";
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const addTodoButton = document.querySelector(".button_action_add");
-//const addTodoPopupEl = document.querySelector("#add-todo-popup");
+const addTodoPopupEl = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
-//const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
-//const todosList = document.querySelector(".todos__list");
+// const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
+// const todosList = document.querySelector(".todos__list");
 
 const handleFormSubmit = (data) => {
   const name = data.name;
@@ -79,11 +79,9 @@ section.renderItems();
 //   modal.classList.remove("popup_visible");
 // };
 
-// addTodoButton.addEventListener("click", () => {
-//   addTodoPopup.open();
-// });
-
-addTodoPopup.open();
+addTodoButton.addEventListener("click", () => {
+  addTodoPopup.open();
+});
 
 addTodoPopup.close();
 
