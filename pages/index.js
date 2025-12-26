@@ -14,18 +14,26 @@ const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
 // const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
 // const todosList = document.querySelector(".todos__list");
 
+const renderTodo = (item) => {
+  const element = generateTodo(item);
+  section.addItem(element);
+};
+
 const handleFormSubmit = (data) => {
   const name = data.name;
   const dateInput = data.date;
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
   const id = uuidv4();
+
   const values = { name, date, id };
   // Could be improved: use this in place of generateTodo and section.addItem
   // section.renderItem(values) // optional
-  const todo = generateTodo(values);
-  section.addItem(todo);
+  // const todo = generateTodo(values);
+
+  renderTodo(values); // just one line of code instead of the 2 lines
   todoCounter.updateTotal(true); // increment completed count
+
   newTodoValidator.resetValidation();
   addTodoPopup.close();
 };
@@ -66,8 +74,7 @@ const section = new Section({
     //   const Todo = generateTodo(item);
     //   todosList.append(todo);
     // });
-    const element = generateTodo(item);
-    section.addItem(element);
+    renderTodo(item);
   },
   containerSelector: ".todos__list",
 });
